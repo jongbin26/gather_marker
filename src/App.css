@@ -1,38 +1,190 @@
+body {
+	background-color: #f6f6f6;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Nanum Pen Script';
+	min-height: 100vh;
+	margin: 0px;
+	overflow: hidden;
+}
+
+@media (min-width: 650px) {
+	.App {
+		width: 640px;
+	}
+}
+
+@media (max-width: 650px) {
+	.App {
+		width: 90vw;
+	}
+}
+
+#root {
+	background-color: white;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
 .App {
-  text-align: center;
+	min-height: 100vh;
+	padding-left: 20px;
+	padding-right: 20px;
+	text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* TopBox */
+.TopBox {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	height: 80px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* MyBtn */
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+button {
+	font-size: 80%;
+	margin: 10px;
+	position: relative;
+	border: none;
+	padding: 10px 15px;
+	border-radius: 10px;
+	font-family: 'paybooc-Light', sans-serif;
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+	text-decoration: none;
+	font-weight: 600;
+	transition: 0.25s;
+	white-space: nowrap;
+}
+button:hover {
+	letter-spacing: 2px;
+	transform: scale(1.1);
+	cursor: pointer;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* MenuBtn */
+.menuBtn.On {
+	display: block;
+	background-color: #a3a1a1;
+	color: #e3dede;
+
+	padding: 20px 30px;
+	font-size: 150%;
 }
 
-.App-link {
-  color: #61dafb;
+.menuBtn {
+	display: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* selectBtn */
+@media (max-width: 650px) {
+	.selectBox.On {
+		width: 80vw;
+	}
+}
+@media (min-width: 650px) {
+	.selectBox.On {
+		width: 400px;
+	}
+}
+.selectBox.On {
+	display: flex;
+	justify-content: space-between;
+	background-color: #a3a1a1;
+
+	border: none;
+	padding: 5px 15px;
+	border-radius: 10px;
+	font-family: 'paybooc-Light', sans-serif;
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+	text-decoration: none;
+	transition: 0.25s;
+}
+
+.selectBox {
+	display: none;
+}
+
+/* Map */
+.Map {
+	padding: 7px;
+	background-color: #a3a1a1;
+	border-radius: 10px;
+	box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+	text-decoration: none;
+	transition: 0.25s;
+}
+#map {
+	border-radius: 8px;
+}
+@media (max-width: 650px) {
+	#map {
+		width: 100%;
+		height: 40vh;
+	}
+}
+@media (min-width: 650px) {
+	#map {
+		width: auto;
+		height: 400px;
+	}
+}
+
+
+.InputBox {
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+input {
+	font-size: 15px;
+	border: 5px solid #a3a1a1;
+	border-radius: 15px;
+	outline: none;
+	padding-left: 10px;
+	background-color: rgb(233, 233, 233);
+	font-weight: 600;
+	text-align: center;
+	transition: 0.25s;
+}
+input:hover{
+	letter-spacing: 2px;
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+@media (max-width: 650px) {
+	input {
+		width: 60%;
+		height: 10%;
+		color: transparent;
+ 		text-shadow: 0 0 0 black;
+	}
+}
+@media (min-width: 650px) {
+	input {
+		width: 300px;
+		height: 40px;
+	}
+}
+
+.reset{
+	display: none;
+}
+.reset.on {
+	display:block;
+	font-size: 15px;
+	border: 5px solid #495057;
+	border-radius: 15px;
+	outline: none;
+	padding: 5px;
+	background-color: rgb(233, 233, 233);
+	font-weight: 600;
+	text-align: center;
+	transition: 0.25s;
 }
