@@ -154,8 +154,17 @@ input {
 }
 input:hover{
 	letter-spacing: 2px;
-	transform: scale(1.1);
+	transform: scale(1.05);
 	cursor: pointer;
+}
+.input{
+	border : 5px solid #a3a1a1;
+}
+.input.block{
+	border : 5px solid #495057;
+}
+.input.block:hover {
+	border: 5px solid #ff4040;
 }
 
 @media (max-width: 650px) {
@@ -175,6 +184,7 @@ input:hover{
 
 .reset{
 	display: none;
+	margin: 10px;
 }
 .reset.on {
 	display:block;
@@ -187,4 +197,9 @@ input:hover{
 	font-weight: 600;
 	text-align: center;
 	transition: 0.25s;
+}
+.reset:hover{
+	letter-spacing: 2px;
+	transform: scale(1.1);
+	cursor: pointer;
 }
