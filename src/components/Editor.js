@@ -1,8 +1,10 @@
-import React, { useState, useRef } from 'react';
-import {createRoot} from "react-dom/client";
-import Marker from "./Marker";
-const InputBox = () => {
-	const [count, setCounter] = useState([0,0,0,0]);
+import React, { useState, useRef, useEffect } from 'react';
+import { createRoot } from 'react-dom/client';
+import Marker from './Marker';
+const { kakao } = window;
+const Editor = ({getMarkerList}) => {
+	//state
+	const [count, setCounter] = useState([0, 0, 0, 0]);
 	const [markerList, setMarkerList] = useState([]);
 	const [content, setContent] = useState('');
 	const [point, setPoint] = useState('');
@@ -21,41 +23,46 @@ const InputBox = () => {
 	};
 	const markerKeyPress = (e) => {
 		if (e.key == 'Enter') {
-			if (!place){
+			if (!place) {
 				placeRef.current.focus();
-			}
-			else{
-				if (markerList.length >= 4){
-					alert("마커가 4개를 초과했습니다!");
-				}
-				else{
+			} else {
+				if (markerList.length >= 4) {
+					alert('마커가 4개를 초과했습니다!');
+				} else {
 					let id = undefined;
-					for(var i=0; i<4; i++){
-						if (count[i] == 0){
+					for (var i = 0; i < 4; i++) {
+						if (count[i] == 0) {
 							count[i] = 1;
 							id = i;
 							break;
 						}
 					}
-					setMarkerList([...markerList, {
-						id : id,
-						place : (place + " " + point)
-					}]);
-					setPoint("")
+					setMarkerList([
+						...markerList,
+						{
+							id: id,
+							place: place + ' ' + point,
+						},
+					]);
+					setPoint('');
 				}
 			}
 		}
-	}
+	};
 	const reset = (e) => {
 		if (disabled) {
 			setDisabled(false);
 			setContent('');
-			setMarkerList('');
+			setMarkerList([]);
+			setCounter([0, 0, 0, 0]);
 		}
 	};
+	useEffect(()=>{
+		getMarkerList(markerList);
+	},[markerList])
 	return (
 		<div>
-			<div className="InputBox">
+			<div className="Editor">
 				<input
 					className={disabled ? 'input block' : 'input'}
 					value={content}
@@ -74,11 +81,11 @@ const InputBox = () => {
 				/>
 			</div>
 			<div className="MarkerBox">
-				{markerList.map((it)=>(
-					<Marker key = {it.id} colorCode={it.id} place={it.place}/>
+				{markerList.map((it) => (
+					<Marker key={it.id} colorCode={it.id} place={it.place} />
 				))}
 			</div>
 		</div>
 	);
 };
-export default InputBox;
+export default Editor;
