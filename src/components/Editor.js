@@ -28,6 +28,7 @@ const Editor = ({getMarkerList}) => {
 			} else {
 				if (markerList.length >= 4) {
 					alert('마커가 4개를 초과했습니다!');
+					setPoint('');
 				} else {
 					let id = undefined;
 					for (var i = 0; i < 4; i++) {
@@ -42,6 +43,7 @@ const Editor = ({getMarkerList}) => {
 						{
 							id: id,
 							place: place + ' ' + point,
+							point: point,
 						},
 					]);
 					setPoint('');
@@ -82,7 +84,7 @@ const Editor = ({getMarkerList}) => {
 			</div>
 			<div className="MarkerBox">
 				{markerList.map((it) => (
-					<Marker key={it.id} colorCode={it.id} place={it.place} />
+					<Marker key={it.id} colorCode={it.id} place={it.point} />
 				))}
 			</div>
 		</div>
