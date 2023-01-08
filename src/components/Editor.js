@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import Marker from './Marker';
 const { kakao } = window;
-const Editor = ({ getMarkerList }) => {
+const Editor = ({ getMarkerList, type }) => {
 	//state
 	const [count, setCounter] = useState([0, 0, 0, 0]);
 	const [markerList, setMarkerList] = useState([]);
@@ -70,6 +70,23 @@ const Editor = ({ getMarkerList }) => {
 		count[colorCode] = 0;
 		setMarkerList(newMarkerList);
 	};
+	useEffect(() => {
+		if(type === "second"){
+			setCounter([1, 1, 1, 1]);
+			setMarkerList([{id: 0, place: "합정 인생네컷", point: "인생네컷"}, {id: 1, place: "합정 포토이즘", point: "포토이즘"}, {id: 2, place: "합정 하루필름", point: "하루필름"}, {id: 3, place: "합정 셀픽스", point: "셀픽스"}]);
+			setContent('합정');
+			setPoint('');
+			setPlace('합정');
+			setDisabled(true);
+		}else{
+			setCounter([0, 0, 0, 0]);
+			setMarkerList([]);
+			setContent('');
+			setPoint('');
+			setPlace('');
+			setDisabled(false);
+		}
+	}, [type])
 	useEffect(() => {
 		getMarkerList(markerList);
 	}, [markerList]);

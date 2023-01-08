@@ -1,6 +1,3 @@
-:root {
-	--vh: 100%;
-}
 body {
 	background-color: #f6f6f6;
 	display: flex;
@@ -30,7 +27,6 @@ body {
 }
 
 .App {
-	height: calc(var(--vh, 1vh) * 100);
 	min-height: 100vh;
 	padding-left: 20px;
 	padding-right: 20px;

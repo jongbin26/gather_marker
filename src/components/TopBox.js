@@ -1,6 +1,6 @@
 import MyBtn from './MyBtn';
 import { useState, useEffect, useRef } from 'react';
-const TopBox = () => {
+const TopBox = ({setChangeType}) => {
 	const [menuToggle, setMenuToggle] = useState(false);
 
 	const switchToggle = () => {
@@ -8,10 +8,10 @@ const TopBox = () => {
 	};
 
 	const showFirstBtn = () => {
-		console.log('First');
+		setChangeType('first');
 	};
 	const showSecondBtn = () => {
-		console.log('Secons');
+		setChangeType('second');
 	};
 
 	const handleClickOutside = (e) => {

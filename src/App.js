@@ -7,21 +7,22 @@ import Editor from './components/Editor';
 function App() {
 	const [markerList, setMarkerList] = useState([]);
 	const [deleteMarker, setDeleteMarker] = useState('');
+	const [type, setType] = useState("first");
 	const getMarkerList = (markerList) => {
 		setMarkerList(markerList);
 	};
-	function setScreenSize() {
-		let vh = window.innerHeight * 0.01;
-		document.documentElement.style.setProperty('--vh', `${vh}px`);
+	const setChangeType = (type) => {
+		if (type === "second"){
+			setType("second");
+		}else{
+			setType("first");
+		}
 	}
-	useEffect(() => {
-		setScreenSize();
-	});
 	return (
 		<div className="App">
-			<TopBox />
-			<Map markerList={markerList} />
-			<Editor getMarkerList={getMarkerList} />
+			<TopBox setChangeType={setChangeType}/>
+			<Map markerList={markerList}/>
+			<Editor getMarkerList={getMarkerList} type={type}/>
 		</div>
 	);
 }
