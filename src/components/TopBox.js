@@ -1,5 +1,5 @@
 import MyBtn from './MyBtn';
-import { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 const TopBox = ({setChangeType}) => {
 	const [menuToggle, setMenuToggle] = useState(false);
 
@@ -46,4 +46,4 @@ const TopBox = ({setChangeType}) => {
 	);
 };
 
-export default TopBox;
+export default React.memo(TopBox);

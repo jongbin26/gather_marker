@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { createRoot } from 'react-dom/client';
 import Marker from './Marker';
 const { kakao } = window;
@@ -12,7 +12,8 @@ const Editor = ({ getMarkerList, type }) => {
 	const [disabled, setDisabled] = useState(false);
 	const placeRef = useRef();
 	const pointRef = useRef();
-	const onKeyPress = (e) => {
+	
+	const onKeyPress = useCallback((e) => {
 		if (e.key === 'Enter') {
 			if (content.length < 1) {
 				e.target.focus();
@@ -22,8 +23,9 @@ const Editor = ({ getMarkerList, type }) => {
 			setDisabled(true);
 			pointRef.current.focus();
 		}
-	};
-	const markerKeyPress = (e) => {
+	});
+	
+	const markerKeyPress = useCallback((e) => {
 		if (e.key === 'Enter') {
 			if (!place) {
 				alert('장소를 입력해주세요!');
@@ -55,7 +57,8 @@ const Editor = ({ getMarkerList, type }) => {
 				}
 			}
 		}
-	};
+	});
+	
 	const reset = (e) => {
 		if (disabled) {
 			setDisabled(false);
@@ -65,11 +68,13 @@ const Editor = ({ getMarkerList, type }) => {
 			setPlace('');
 		}
 	};
-	const deleteMarker = ({ colorCode }) => {
+	
+	const deleteMarker = useCallback(({ colorCode }) => {
 		const newMarkerList = markerList.filter((marker) => marker.id !== colorCode);
 		count[colorCode] = 0;
 		setMarkerList(newMarkerList);
-	};
+	}, [markerList]);
+	
 	useEffect(() => {
 		if(type === "second"){
 			setCounter([1, 1, 1, 1]);

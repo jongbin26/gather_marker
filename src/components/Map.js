@@ -122,4 +122,4 @@ const Map = ({ markerList }) => {
 	);
 };
 
-export default Map;
+export default React.memo(Map);

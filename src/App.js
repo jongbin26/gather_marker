@@ -1,4 +1,4 @@
-import React, { useReducer, useState, useEffect } from 'react';
+import React, { useReducer, useState, useEffect, useCallback } from 'react';
 import './App.css';
 import TopBox from './components/TopBox';
 import Map from './components/Map';
@@ -6,18 +6,17 @@ import Editor from './components/Editor';
 
 function App() {
 	const [markerList, setMarkerList] = useState([]);
-	const [deleteMarker, setDeleteMarker] = useState('');
 	const [type, setType] = useState("first");
 	const getMarkerList = (markerList) => {
 		setMarkerList(markerList);
 	};
-	const setChangeType = (type) => {
+	const setChangeType = useCallback((type) => {
 		if (type === "second"){
 			setType("second");
 		}else{
 			setType("first");
 		}
-	}
+	}, [type]);
 	return (
 		<div className="App">
 			<TopBox setChangeType={setChangeType}/>
@@ -27,4 +26,4 @@ function App() {
 	);
 }
 
-export default App;
+export default React.memo(App);
