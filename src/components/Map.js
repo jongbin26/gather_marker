@@ -47,14 +47,14 @@ const Map = ({ markerList }) => {
 	}
 	useEffect(() => {
 		var container = document.getElementById('map');
-		var options = { center: new kakao.maps.LatLng(37.55516136519056, 127.16406673327354) };
+		var options = { center: new kakao.maps.LatLng(37.563019464959865, 127.19292907736377) };
 		var kakaoMap = new kakao.maps.Map(container, options);
 		setMap(kakaoMap);
 	}, []);
 	useEffect(() => {
 		if (markerList.length === 0) {
 			var container = document.getElementById('map');
-			var options = { center: new kakao.maps.LatLng(37.55516136519056, 127.16406673327354) };
+			var options = { center: new kakao.maps.LatLng(37.563019464959865, 127.19292907736377) };
 			var kakaoMap = new kakao.maps.Map(container, options);
 			setMap(kakaoMap);
 		}
